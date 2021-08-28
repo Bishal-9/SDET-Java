@@ -18,7 +18,7 @@ public class D {
             System.out.println("\nEntered number is " + number);
             System.out.println("\nChecking for Palindrome Number...");
 
-            palindrome();
+            numberPalindrome();
 
         } catch (Exception e) {
             System.out.println("\nError occurred!!\n" + e + "\nEnter a valid number and try again.");
@@ -28,7 +28,7 @@ public class D {
         scannerObject.close();
     }
 
-    static void palindrome() {
+    static void numberPalindrome() {
         int n = number;
         int rNumber = 0;
 
