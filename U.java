@@ -35,7 +35,8 @@ public class U {
                 System.out.print(array[i] + ", ");
             }
 
-            binarySearch();
+            firstWay();
+            secondWay();
         } catch (Exception e) {
             System.out.println("Error occurred!!\n" + e + "\nPlease enter valid number and try again.");
             main(args);
@@ -44,18 +45,18 @@ public class U {
         scannerObject.close();
     }
 
-    static void binarySearch() {
+    static void firstWay() {
 
         int lowerIndex = 0;
         int higherIndex = arrayLength;
         int middleIndex = arrayLength / 2;
         boolean found = false;
 
-        while (lowerIndex < higherIndex) {
+        while (lowerIndex <= higherIndex) {
             
             if (array[middleIndex] == numberToSearch) {
                 found = true;
-                System.out.println("Your entered element " + numberToSearch + " is found within the array.");
+                System.out.println("\nYour entered element " + numberToSearch + " is found within the array.");
                 break;
             } else if(numberToSearch > array[middleIndex]) {
                 lowerIndex = middleIndex + 1;
@@ -66,6 +67,17 @@ public class U {
             }
         }
 
-        if(found) System.out.println("Element not found in the array.");
+        if(found == false) System.out.println("\nElement not found in the array.");
+    }
+
+    static void secondWay() {
+
+        int searchedIndex = Arrays.binarySearch(array, numberToSearch) + 1;
+
+        if(searchedIndex > 0) {
+            System.out.println("Element found in " + searchedIndex + " position in the array.");
+        } else {
+            System.out.println("Element not found.");
+        }
     }
 }
