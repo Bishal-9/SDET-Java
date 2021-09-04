@@ -1,12 +1,14 @@
-// Sort arrays using Bubble Sort technique
+// Sort array using built-in methods
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
-public class V {
-
+public class W {
+    
     private static int arrayLength;
     private static int[] array;
+    private static Integer[] a;
 
     public static void main(String[] args) {
 
@@ -17,16 +19,19 @@ public class V {
             System.out.print("Enter array length: ");
             arrayLength = scannerObject.nextInt();
 
+            a = new Integer[arrayLength];
             array = new int[arrayLength];
 
             for(int i = 0; i < arrayLength; i++) {
                 System.out.print("Enter array element: ");
-                array[i] = scannerObject.nextInt();
+                a[i] = array[i] = scannerObject.nextInt();
             }
 
             System.out.print("\nYour entered array is " + Arrays.toString(array));
 
-            bubbleSort();
+            firstWay();
+            secondWay();
+            thirdWay();
         } catch (Exception e) {
             System.out.println("Error occurred!!\n" + e + "\nPlease enter valid number and try again.");
             main(args);
@@ -35,18 +40,21 @@ public class V {
         scannerObject.close();
     }
 
-    static void bubbleSort() {
-        
-        for(int i = 0; i < arrayLength; i++) {
-            for(int j = 0; j < arrayLength; j++) {
-                if(array[i] > array[j]) {
-                    int value = array[i];
-                    array[i] = array[j];
-                    array[j] = value;
-                }
-            }
-        }
+    static void firstWay() {
 
-        System.out.print("\nSorted array is " + Arrays.toString(array));
+        Arrays.parallelSort(array);
+        System.out.print("\nSorted array using ParallelSort: " + Arrays.toString(array));
+    }
+
+    static void secondWay() {
+
+        Arrays.sort(array);
+        System.out.print("\nSorted array using Sort: " + Arrays.toString(array));
+    }
+
+    static void thirdWay() {
+
+        Arrays.sort(a, Collections.reverseOrder());
+        System.out.print("\nSorted array in descending order using Sort: " + Arrays.toString(a));
     }
 }
